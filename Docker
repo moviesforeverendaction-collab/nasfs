@@ -1,0 +1,36 @@
+# =============================================
+# Dockerfile for WhatsApp Group Cloner Bot
+# Based on your new.py script
+# Uses python-telegram-bot + requests + Green-API
+# =============================================
+
+FROM python:3.12-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install only the required packages (no cache to keep image small)
+RUN pip install --no-cache-dir \
+    python-telegram-bot==21.6 \
+    requests
+
+# Copy the bot script (keeps original filename)
+COPY new.py /app/new.py
+
+# Optional: If you already have admins.json, copy it
+# COPY admins.json /app/admins.json
+
+# Create a non-root user for security (recommended)
+RUN useradd -m -u 1000 botuser && \
+    chown -R botuser:botuser /app
+
+USER botuser
+
+# The bot will read these environment variables at runtime:
+#   TELEGRAM_BOT_TOKEN
+#   ADMIN_CHAT_ID
+#   GREEN_INSTANCE_ID
+#   GREEN_API_TOKEN
+# (You can also override the defaults via -e flags)
+
+CMD ["python", "new.py"]
