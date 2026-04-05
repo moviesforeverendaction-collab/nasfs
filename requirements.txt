@@ -1,0 +1,4 @@
+# requirements.txt for WhatsApp Group Cloner Telegram Bot
+
+python-telegram-bot==21.6
+requests
