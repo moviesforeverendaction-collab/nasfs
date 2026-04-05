@@ -1,23 +1,12 @@
 # .dockerignore
-# Excludes everything except the files we actually need for the build
-
-# Ignore all files by default
 **
-
-# But explicitly include what we want
-!new.py
+!main.py
 !.dockerignore
 !Dockerfile
-
-# Common ignores (even if not present)
 __pycache__/
 *.pyc
 *.pyo
-*.pyd
 .env
 .git
-.gitignore
-.vscode/
-.idea/
 *.log
-admins.json          # ← optional: ignore if you want fresh one every build
+admins.json   # remove this line if you want to keep your admins.json
