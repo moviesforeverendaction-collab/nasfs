@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir \
     requests
 
 # Copy the bot script (keeps original filename)
-COPY new.py /app/new.py
+COPY main.py /app/main.py
 
 # Optional: If you already have admins.json, copy it
 # COPY admins.json /app/admins.json
